@@ -54,7 +54,7 @@ function extractImports(document, range) {
   return codes.split('\n').filter(
     (line) => {
       const code = line.trim();
-      return lexer.isImportStatement(code);
+      return lexer.isImportStatement(code) || lexer.isRequireStatement(code);
     });
 }
 
@@ -86,7 +86,7 @@ function findImports(document) {
 function findFirstImportLine(document) {
   let lineNumber = 0;
   let line = document.lineAt(lineNumber);
-  while (!lexer.isImportStatement(line.text)) {
+  while (!lexer.isImportStatement(line.text) && !lexer.isRequireStatement(line.text)) {
     lineNumber++;
     if (lineNumber === document.lineCount - 1) {
       return null;
@@ -109,6 +109,7 @@ function findLastImportLine(document, startLine) {
   let line = document.lineAt(lineNumber);
   while (
     lexer.isImportStatement(line.text) ||
+    lexer.isRequireStatement(line.text) ||
     lexer.isEmpty(line.text)
   ) {
     lineNumber++;

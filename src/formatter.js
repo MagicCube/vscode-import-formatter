@@ -1,6 +1,7 @@
 const vscode = require('vscode');
 
-const defaultSorter = require('./default-sorter');
+const lexer = require('./lexer');
+const sorter = require('./sorters/default-sorter');
 
 /**
  * Returns an array of actions to format the document.
@@ -22,16 +23,14 @@ function format(document) {
   ];
 }
 
-
 /**
  * Generate code for the resorted imports.
  *
  * @param {any} imports
  */
 function sortImports(imports) {
-  return defaultSorter.sort(imports);
+  return sorter.sort(imports);
 }
-
 
 /**
  * Return a new TextEdit action which will replace the range with the given code.
@@ -55,7 +54,7 @@ function extractImports(document, range) {
   return codes.split('\n').filter(
     (line) => {
       const code = line.trim();
-      return isImportStatement(code);
+      return lexer.isImportStatement(code);
     });
 }
 
@@ -87,7 +86,7 @@ function findImports(document) {
 function findFirstImportLine(document) {
   let lineNumber = 0;
   let line = document.lineAt(lineNumber);
-  while (!isImportStatement(line)) {
+  while (!lexer.isImportStatement(line.code)) {
     lineNumber++;
     if (lineNumber === document.lineCount - 1) {
       return null;
@@ -109,8 +108,8 @@ function findLastImportLine(document, startLine) {
   let lineNumber = startLine.lineNumber;
   let line = document.lineAt(lineNumber);
   while (
-    isImportStatement(line) ||
-    isEmpty(line)
+    lexer.isImportStatement(line.code) ||
+    lexer.isEmpty(line.code)
   ) {
     lineNumber++;
     if (lineNumber === document.lineCount - 1) {
@@ -119,37 +118,6 @@ function findLastImportLine(document, startLine) {
     line = document.lineAt(lineNumber);
   };
   return document.lineAt(lineNumber - 1);
-}
-
-
-
-/**
- * Returns whether the line is an import statement.
- *
- * @param {any} line
- * @returns {boolean}
- */
-function isImportStatement(line) {
-  // TODO: Rewrite with babel or regex.
-  const code = (typeof (line) === 'string' ? line : line.text).trim();
-  if (code.startsWith('import ')) {
-    return true;
-  }
-  return false;
-}
-
-/**
- * Returns whether the line is empty.
- *
- * @param {any} line
- * @returns
- */
-function isEmpty(line) {
-  const code = (typeof (line) === 'string' ? line : line.text).trim();
-  if (code === '') {
-    return true;
-  }
-  return false;
 }
 
 exports.format = format;

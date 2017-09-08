@@ -1,5 +1,5 @@
 const IMPORT_REGX = /^import\s[\s\w\{\}\$\,\*]*['"]([\w\-\.\/]+)['"]/;
-const REQUIRE_REGX = /^(var|const|let)\s*([\w\$]+)\s*=\s*require\s*\(['"]([\w\-\.\/]+)["']/;
+const REQUIRE_REGX = /^(var|const|let)\s*([\w\${}\s\,\:]+)\s*=\s*require\s*\(['"]([\w\-\.\/]+)["']/;
 
 /**
  * Returns whether the code is an import statement.

@@ -3,7 +3,7 @@
   "displayName": "ES6 Import Formatter",
   "description": "Sort the leading imports/requires for ES6.",
   "version": "0.1.0",
-  "publisher": "Henry Li",
+  "publisher": "henry-li",
   "engines": {
     "vscode": "^1.16.0"
   },

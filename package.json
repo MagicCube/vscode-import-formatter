@@ -17,10 +17,19 @@
   "contributes": {
     "commands": [
       {
-        "command": "import-formatter.format",
-        "title": "Format imports/requires"
+        "command": "importFormatter.format",
+        "title": "Sort imports/requires"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "resourceLangId == javascript",
+          "command": "importFormatter.format",
+          "group": "1_modification"
+        }
+      ]
+    }
   },
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install"

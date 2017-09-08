@@ -5,6 +5,7 @@
 
 A VSCode plugin which automatically sort the leading import and require statements.
 
+![Animation](https://github.com/MagicCube/vscode-import-formatter/blob/master/doc/images/animation.gif?raw=true)
 
 ## Installation
 

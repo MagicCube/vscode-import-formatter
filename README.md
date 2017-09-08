@@ -5,8 +5,7 @@ A VSCode plugin which automatically sort the leading import and require statemen
 
 ## Installation
 
-* [Marketplace](https://marketplace.visualstudio.com/items?itemName=henry-li.vscode-import-formatter)
-* [Install in VSCode](vscode:extension/henry-li.vscode-import-formatter)
+* [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=henry-li.vscode-import-formatter)
 
 
 

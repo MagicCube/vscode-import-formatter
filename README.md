@@ -1,6 +1,6 @@
-# vscode-es6-sort-formatter README
+# vscode-import-formatter
 
-This is the README for your extension "vscode-es6-sort-formatter". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "vscode-import-formatter". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 

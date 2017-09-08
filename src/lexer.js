@@ -1,3 +1,6 @@
+const IMPORT_REGX = /^import\s[\s\w\{\}\$\,]*['"]([\w\-\.\/]+)['"]/;
+const REQUIRE_REGX = /^(var|const|let)\s*([\w\$]+)\s*=\s*require\s*\(['"]([\w\-\.\/]+)["']/;
+
 /**
  * Returns whether the code is an import statement.
  *
@@ -6,9 +9,7 @@
  */
 function isImportStatement(rawCode) {
   const code = rawCode.trim();
-  return (
-    code.match(/^import\s/) !== null
-  );
+  return IMPORT_REGX.test(code);
 }
 
 /**
@@ -27,9 +28,7 @@ function isImportStatement(rawCode) {
  */
 function isRequireStatement(rawCode) {
   const code = rawCode.trim();
-  return (
-    code.match(/var|const|let\s*([\w\$]+)\s*=\s*require\s*\(/)
-  );
+  return REQUIRE_REGX.test(code);
 }
 
 /**
@@ -40,13 +39,21 @@ function isRequireStatement(rawCode) {
  */
 function isEmpty(rawCode) {
   const code = rawCode.trim();
-  if (code === '') {
-    return true;
+  return code === '';
+}
+
+function extractFilePath(rawCode) {
+  const code = rawCode.trim();
+  const match = code.match(IMPORT_REGX);
+  if (match && match[1]) {
+    return match[1];
   }
-  return false;
+  return null;
 }
 
 module.exports = {
+  extractFilePath,
   isEmpty,
-  isImportStatement
+  isImportStatement,
+  isRequireStatement
 };

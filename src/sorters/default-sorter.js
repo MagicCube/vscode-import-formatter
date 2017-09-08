@@ -1,3 +1,7 @@
+const pathUtil = require('path');
+
+const lexer = require('../lexer');
+
 /**
  * Return sorted codes.
  *
@@ -6,28 +10,33 @@
  */
 function sort(imports) {
   const sections = {
-    nodeModules: [],
-    relatives: [],
-    assets: []
+    npmModules: [],
+    npmAssets: [],
+    relativeModules: [],
+    relativeAssets: []
   };
 
   imports.forEach((imp) => {
-    const type = getImportType(imp);
+    const type = getFileType(imp);
     sections[type].push(imp);
   });
 
   const results = [];
-  if (sections.nodeModules.length) {
-    sections.nodeModules.sort(compare);
-    results.push(sections.nodeModules.join('\n'));
+  if (sections.npmModules.length) {
+    sections.npmModules.sort(compare);
+    results.push(sections.npmModules.join('\n'));
   }
-  if (sections.relatives.length) {
-    sections.relatives.sort(compare);
-    results.push(sections.relatives.join('\n'));
+  if (sections.npmAssets.length) {
+    sections.npmAssets.sort(compare);
+    results.push(sections.npmAssets.join('\n'));
   }
-  if (sections.assets.length) {
-    sections.assets.sort(compare);
-    results.push(sections.assets.join('\n'));
+  if (sections.relativeModules.length) {
+    sections.relativeModules.sort(compare);
+    results.push(sections.relativeModules.join('\n'));
+  }
+  if (sections.relativeAssets.length) {
+    sections.relativeAssets.sort(compare);
+    results.push(sections.relativeAssets.join('\n'));
   }
   return results.join('\n\n');
 }
@@ -44,20 +53,29 @@ function compare(a, b) {
 }
 
 /**
- * Get import type.
+ * Get file type from import/require statement.
  *
  * @param {any} imp
  * @returns
  */
-function getImportType(imp) {
-  // TODO: Rewrite with babel or regex.
-  if (
-    imp.includes('.css') ||
-    imp.includes('.scss') ||
-    imp.includes('.less')) {
-    return 'assets';
+function getFileType(imp) {
+  const path = lexer.extractFilePath(imp);
+  const ext = pathUtil.extname(path).toLowerCase();
+  const isModule = ext === '' || ext === '.js' || ext === '.jsx' || ext === '.ts';
+  const isRelative = path.includes('./');
+  if (isModule) {
+    if (isRelative) {
+      return 'relativeModules';
+    } else {
+      return 'npmModules';
+    }
+  } else {
+    if (isRelative) {
+      return 'relativeAssets';
+    } else {
+      return 'npmAssets';
+    }
   }
-  return imp.includes('./') ? 'relatives' : 'nodeModules';
 }
 
 exports.sort = sort;

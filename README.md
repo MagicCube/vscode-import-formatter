@@ -7,7 +7,7 @@ A VSCode plugin which automatically sort the leading import and require statemen
 
 ## Features
 
-+ **Sort ES6 import statements**
+**Sort ES6 import statements**
 
 *Before*
 
@@ -37,7 +37,7 @@ import styles from '../index.less';
 
 
 
-+ **The require() function from CommonJS is also supported.**
+**The require() function from CommonJS is also supported.**
 
 *Before*
 

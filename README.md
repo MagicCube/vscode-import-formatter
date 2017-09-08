@@ -1,65 +1,98 @@
-# vscode-import-formatter
+# Import Formatter
 
-This is the README for your extension "vscode-import-formatter". After writing up a brief description, we recommend including the following sections.
+Automatically sort the leading import and require statements.
+
+
+
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+**Sort ES6 import statements**
 
-For example if there is an image subfolder under your extension project workspace:
+*Before*
 
-\!\[feature X\]\(images/feature-x.png\)
+```js
+import styles from '../index.less';
+import { b as bb } from '../../b';
+import c from '../../c';
+import a from 'a';
+import React from 'react';
+```
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+*After*
 
-## Requirements
+```js
+// ESLint proof
+// Built-ins and modules from third parties
+import a from 'a';
+import React from 'react';
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+// Modules from the current project.
+import { b as bb } from '../../b';
+import c from '../../c';
 
-## Extension Settings
+// Stylesheets or other assets
+import styles from '../index.less';
+```
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
 
-For example:
 
-This extension contributes the following settings:
+**The require() function from CommonJS is also supported.**
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+*Before*
+
+```js
+var c = require('../../c');
+var a = require('a');
+var { b: bb } = require('../../b');
+var React = require('react');
+```
+
+*After*
+
+```js
+var a = require('a');
+var React = require('react');
+
+var { b: bb } = require('../../b');
+var c = require('../../c');
+```
+
+> Both **var** and **const**  are supported in CommonJS mode.
+
+
+
+## Command
+
+![](https://github.com/MagicCube/vscode-import-formatter/blob/master/doc/images/command-palette.png?raw=true)
+
+Type `Sort imports/requires` in `VSCode Command Palette`.
+
+
+
+## Context Menu
+
+![](https://github.com/MagicCube/vscode-import-formatter/blob/master/doc/images/context-menu.png?raw=true)
+
+Click `Sort imports/requires` in the context menu in JavaScript editor.
+
+
+
+## Default Keybindings
+
+* Windows: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd>
+* Mac OS X: <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>S</kbd>
+
+
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+The comments between import/require statements will be removed.
+
+
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.1.0
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Initial release.

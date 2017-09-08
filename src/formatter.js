@@ -130,7 +130,8 @@ function findLastImportLine(document, startLine) {
  * @returns {boolean}
  */
 function isImportStatement(line) {
-  const code = (typeof(line) === 'string' ? line : line.text).trim();
+  // TODO: Rewrite with babel or regex.
+  const code = (typeof (line) === 'string' ? line : line.text).trim();
   if (code.startsWith('import ')) {
     return true;
   }
@@ -144,7 +145,7 @@ function isImportStatement(line) {
  * @returns
  */
 function isEmpty(line) {
-  const code = (typeof(line) === 'string' ? line : line.text).trim();
+  const code = (typeof (line) === 'string' ? line : line.text).trim();
   if (code === '') {
     return true;
   }

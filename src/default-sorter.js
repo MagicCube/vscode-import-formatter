@@ -1,8 +1,14 @@
+/**
+ * Return sorted codes.
+ *
+ * @param {any} imports
+ * @returns
+ */
 function sort(imports) {
   const sections = {
     nodeModules: [],
     relatives: [],
-    stylesheets: []
+    assets: []
   };
 
   imports.forEach((imp) => {
@@ -19,20 +25,37 @@ function sort(imports) {
     sections.relatives.sort(compare);
     results.push(sections.relatives.join('\n'));
   }
-  if (sections.stylesheets.length) {
-    sections.stylesheets.sort(compare);
-    results.push(sections.stylesheets.join('\n'));
+  if (sections.assets.length) {
+    sections.assets.sort(compare);
+    results.push(sections.assets.join('\n'));
   }
   return results.join('\n\n');
 }
 
+/**
+ * Compare strings in locale mode, meanwhile ignore case.
+ *
+ * @param {any} a
+ * @param {any} b
+ * @returns
+ */
 function compare(a, b) {
   return a.toLowerCase().localeCompare(b.toLowerCase());
 }
 
+/**
+ * Get import type.
+ *
+ * @param {any} imp
+ * @returns
+ */
 function getImportType(imp) {
-  if (imp.includes('.css') || imp.includes('.scss') || imp.includes('.less')) {
-    return 'stylesheets';
+  // TODO: Rewrite with babel or regex.
+  if (
+    imp.includes('.css') ||
+    imp.includes('.scss') ||
+    imp.includes('.less')) {
+    return 'assets';
   }
   return imp.includes('./') ? 'relatives' : 'nodeModules';
 }

@@ -1,7 +1,7 @@
 {
-  "name": "es6-sort-import",
-  "displayName": "ES6 Sort Import",
-  "description": "Sort ES6 imports.",
+  "name": "vscode-es6-sort-formatter",
+  "displayName": "ES6 Sort Formatter",
+  "description": "Sort leading imports for ES6.",
   "version": "0.0.1",
   "publisher": "Henry Li",
   "engines": {

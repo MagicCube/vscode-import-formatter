@@ -7,6 +7,10 @@ vscode.commands.registerCommand('importFormatter.format', () => {
   if (activeTextEditor && activeTextEditor.document.languageId.startsWith('javascript')) {
     const { document } = activeTextEditor;
     const edit = formatter.format(document);
-    return vscode.workspace.applyEdit(edit);
+    if (edit) {
+      return vscode.workspace.applyEdit(edit);
+    } else {
+      return null;
+    }
   }
 });

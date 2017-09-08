@@ -1,4 +1,4 @@
-const IMPORT_REGX = /^import\s[\s\w\{\}\$\,]*['"]([\w\-\.\/]+)['"]/;
+const IMPORT_REGX = /^import\s[\s\w\{\}\$\,\*]*['"]([\w\-\.\/]+)['"]/;
 const REQUIRE_REGX = /^(var|const|let)\s*([\w\$]+)\s*=\s*require\s*\(['"]([\w\-\.\/]+)["']/;
 
 /**
@@ -44,9 +44,13 @@ function isEmpty(rawCode) {
 
 function extractFilePath(rawCode) {
   const code = rawCode.trim();
-  const match = code.match(IMPORT_REGX);
+  let match = code.match(IMPORT_REGX);
   if (match && match[1]) {
     return match[1];
+  }
+  match = code.match(REQUIRE_REGX);
+  if (match && match[3]) {
+    return match[3];
   }
   return null;
 }

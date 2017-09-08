@@ -14,6 +14,14 @@
     "onLanguage:javascript"
   ],
   "main": "./index",
+  "contributes": {
+    "commands": [
+      {
+        "command": "import-formatter.format",
+        "title": "Format imports/requires"
+      }
+    ]
+  },
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install"
   },

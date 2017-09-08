@@ -3,7 +3,7 @@
   "displayName": "ES6 Import Formatter",
   "description": "Sort the leading imports/requires for ES6.",
   "version": "0.1.2",
-  "icon": "https://github.com/MagicCube/vscode-import-formatter/blob/master/icon.png?raw=true",
+  "icon": "icon.png",
   "publisher": "henry-li",
   "engines": {
     "vscode": "^1.16.0"

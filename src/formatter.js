@@ -86,7 +86,7 @@ function findImports(document) {
 function findFirstImportLine(document) {
   let lineNumber = 0;
   let line = document.lineAt(lineNumber);
-  while (!lexer.isImportStatement(line.code)) {
+  while (!lexer.isImportStatement(line.text)) {
     lineNumber++;
     if (lineNumber === document.lineCount - 1) {
       return null;
@@ -108,8 +108,8 @@ function findLastImportLine(document, startLine) {
   let lineNumber = startLine.lineNumber;
   let line = document.lineAt(lineNumber);
   while (
-    lexer.isImportStatement(line.code) ||
-    lexer.isEmpty(line.code)
+    lexer.isImportStatement(line.text) ||
+    lexer.isEmpty(line.text)
   ) {
     lineNumber++;
     if (lineNumber === document.lineCount - 1) {

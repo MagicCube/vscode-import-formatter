@@ -29,7 +29,15 @@
           "group": "1_modification"
         }
       ]
-    }
+    },
+    "keybindings": [
+      {
+        "when": "resourceLangId == javascript",
+        "command": "importFormatter.format",
+        "key": "ctrl+alt+s",
+        "mac": "cmd+alt+s"
+      }
+    ]
   },
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install"

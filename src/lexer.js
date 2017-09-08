@@ -1,32 +1,29 @@
 /**
- * Returns whether the line is an import statement.
+ * Returns whether the code is an import statement.
  *
- * @param {any} line
+ * @param {any} rawCode
  * @returns {boolean}
  */
-function isImportStatement(line) {
-  // TODO: Rewrite with babel or regex.
-  const code = line.trim();
-  if (code.startsWith('import ')) {
-    return true;
-  }
-  return false;
+function isImportStatement(rawCode) {
+  const code = rawCode.trim();
+  return (
+    code.match(/^import\s/) !== null
+  );
 }
 
 /**
- * Returns whether the line is empty.
+ * Returns whether the code is empty.
  *
- * @param {any} line
+ * @param {any} rawCode
  * @returns
  */
-function isEmpty(line) {
-  const code = line.trim();
+function isEmpty(rawCode) {
+  const code = rawCode.trim();
   if (code === '') {
     return true;
   }
   return false;
 }
-
 
 module.exports = {
   isEmpty,

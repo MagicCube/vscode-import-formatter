@@ -7,7 +7,7 @@ A VSCode plugin which automatically sort the leading import and require statemen
 
 ## Features
 
-**Sort ES6 import statements**
++ **Sort ES6 import statements**
 
 *Before*
 
@@ -37,7 +37,7 @@ import styles from '../index.less';
 
 
 
-**The require() function from CommonJS is also supported.**
++ **The require() function from CommonJS is also supported.**
 
 *Before*
 
@@ -66,7 +66,7 @@ var c = require('../../c');
 
 ![](https://github.com/MagicCube/vscode-import-formatter/blob/master/doc/images/command-palette.png?raw=true)
 
-Type `Sort imports/requires` in `VSCode Command Palette`.
+Type `Sort imports/requires` in VSCode [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
 
 
 

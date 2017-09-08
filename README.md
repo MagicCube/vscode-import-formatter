@@ -1,6 +1,6 @@
 # Import Formatter
 
-Automatically sort the leading import and require statements.
+A VSCode plugin which automatically sort the leading import and require statements.
 
 
 

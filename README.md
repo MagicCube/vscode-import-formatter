@@ -1,4 +1,7 @@
 # Import Formatter
+[![Version](https://vsmarketplacebadge.apphb.com/version/henry-li.vscode-import-formatter.svg)](https://marketplace.visualstudio.com/items?itemName=henry-li.vscode-import-formatter)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs-short/henry-li.vscode-import-formatter.svg)](https://marketplace.visualstudio.com/items?itemName=henry-li.vscode-import-formatter)
+[![Ratings](https://vsmarketplacebadge.apphb.com/rating/henry-li.vscode-import-formatter.svg)](https://marketplace.visualstudio.com/items?itemName=henry-li.vscode-import-formatter)
 
 A VSCode plugin which automatically sort the leading import and require statements.
 

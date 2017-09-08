@@ -55,11 +55,11 @@ function compare(a, b) {
 /**
  * Get file type from import/require statement.
  *
- * @param {any} imp
+ * @param {any} code
  * @returns
  */
-function getFileType(imp) {
-  const path = lexer.extractFilePath(imp);
+function getFileType(code) {
+  const path = lexer.extractFilePath(code);
   const ext = pathUtil.extname(path).toLowerCase();
   const isModule = ext === '' || ext === '.js' || ext === '.jsx' || ext === '.ts';
   const isRelative = path.includes('./');

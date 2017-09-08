@@ -18,9 +18,7 @@ function format(document) {
   const imports = extractImports(document, range);
   const code = sortImports(imports);
 
-  return [
-    createReplaceAction(range, `${code}\n`)
-  ];
+  return createReplaceEdit(document, range, `${code}\n`);
 }
 
 /**
@@ -33,14 +31,16 @@ function sortImports(imports) {
 }
 
 /**
- * Return a new TextEdit action which will replace the range with the given code.
+ * Return a new TextEdit which will replace the range with the given code.
  *
  * @param {any} range
  * @param {any} code
  * @returns
  */
-function createReplaceAction(range, code) {
-  return vscode.TextEdit.replace(range, code);
+function createReplaceEdit(document, range, code) {
+  const edit = new vscode.WorkspaceEdit();
+  edit.replace(document.uri, range, code);
+  return edit;
 }
 
 /**

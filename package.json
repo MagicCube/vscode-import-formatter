@@ -8,10 +8,9 @@
   "keywords": [
     "sort",
     "import",
-    "format",
-    "es6",
     "require",
-    "commonjs"
+    "format",
+    "es6"
   ],
   "engines": {
     "vscode": "^1.16.0"

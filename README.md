@@ -70,6 +70,16 @@ var c = require('../../c');
 
 
 
+## Sort Order
+
+Currently the plugin only supports 'default' order which exactly fits my own coding style.
+
+Don't like the default sorting order?
+
+Please leave your requirements in [Q&A](https://marketplace.visualstudio.com/items?itemName=henry-li.vscode-import-formatter#qna), and I'll make customized settings for you.
+
+
+
 ## Command
 
 ![](https://github.com/MagicCube/vscode-import-formatter/blob/master/doc/images/command-palette.png?raw=true)

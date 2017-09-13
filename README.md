@@ -111,6 +111,11 @@ The comments between import/require statements will be removed.
 
 ## Release Notes
 
+### 0.1.8
+
+Add supports for paths begin with '@'.
+
+
 ### 0.1.0
 
 Initial release.

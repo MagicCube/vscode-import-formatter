@@ -70,13 +70,13 @@ var c = require('../../c');
 
 
 
-## Sort Order
+## About Sort Order
 
 Currently the plugin only supports 'default' order which exactly fits my own coding style.
 
 Don't like the default sorting order?
 
-Please leave your requirements in [Q&A](https://marketplace.visualstudio.com/items?itemName=henry-li.vscode-import-formatter#qna), and I'll make customized settings for you.
+Please leave your requirements in [Q&A](https://marketplace.visualstudio.com/items?itemName=henry-li.vscode-import-formatter#qna), and I'll try to make customized settings for you.
 
 
 

@@ -49,7 +49,9 @@ function sort(imports) {
  * @returns
  */
 function compare(a, b) {
-  return a.toLowerCase().localeCompare(b.toLowerCase());
+  const pathA = lexer.extractFilePath(a).toLowerCase();
+  const pathB = lexer.extractFilePath(b).toLowerCase();
+  return pathA.localeCompare(pathB);
 }
 
 /**
